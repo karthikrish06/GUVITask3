@@ -1,0 +1,32 @@
+//task using API OF Rest countries
+
+let xhr = new XMLHttpRequest();
+console.log(xhr);
+xhr.open("GET","https://restcountries.com/v3.1/all");
+xhr.send();
+xhr.onload = function () {
+    const data = JSON.parse(xhr.response);
+    console.log(data);
+    for(let i =0; i<data.length; i++){
+    console.log(data[i].flag);
+    console.log(data[i].country);
+    console.log(data[i].region);
+    console.log(data[i].subregion);
+    }
+};
+const dummyJson = {
+    name:"sanjay",
+};
+const strJson =JSON.stringify(dummyJson);
+console.log(dummyJson);
+console.log(strJson);
+const conJson =JSON.parse(strJson);
+console.log(strJson);
+
+//comparision of two Json have same properties without order
+
+let obj1 = {name:"person1", age:5};
+let obj2 = { age:5, name:"person1"}
+let Jsonsc = JSON.stringify(obj1, Object.keys(obj1).sort());
+let Jsonsc1 = JSON.stringify(obj2, Object.keys(obj2).sort());
+console.log(Jsonsc ==Jsonsc1);
